@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zx.tkmybatistest.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="cn.zx.tkmybatistest.entity.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="age" jdbcType="VARCHAR" property="age" />
+    <result column="habbit" jdbcType="VARCHAR" property="habbit" />
+  </resultMap>
+
+  <resultMap id="userGroupByName" type="cn.zx.tkmybatistest.vo.UserGroupByName">
+    <id column="name" jdbcType="VARCHAR" property="name" />
+    <collection property="users" ofType="cn.zx.tkmybatistest.entity.User">
+      <id column="id" jdbcType="INTEGER" property="id" />
+      <result column="name" jdbcType="VARCHAR" property="name" />
+      <result column="age" jdbcType="VARCHAR" property="age" />
+      <result column="habbit" jdbcType="VARCHAR" property="habbit" />
+    </collection>
+  </resultMap>
+
+  <select id="selectGroupByName" resultMap="userGroupByName">
+    select *
+    from test.user
+  </select>
+</mapper>
